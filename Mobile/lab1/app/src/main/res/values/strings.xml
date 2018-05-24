@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">lab1_1</string>
+    <string name="pass">Введіть пароль</string>
+    <string name="switch1">Показати пароль</string>
+    <string name="ok">OK</string>
+</resources>
