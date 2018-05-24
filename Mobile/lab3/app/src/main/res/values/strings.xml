@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">lab3</string>
+    <string name="pass">Введіть пароль</string>
+    <string name="switch1">Показати пароль</string>
+    <string name="add">Добавити</string>
+    <string name="show">Показати</string>
+    <string name="delete">Видалити Всі</string>
+</resources>

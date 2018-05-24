@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">lab4</string>
+    <string name="play">Програти</string>
+    <string name="pause">Зупинити</string>
+    <string name="stop">Призупинити</string>
+    <string name="audio">Аудіо</string>
+    <string name="video">Відео</string>
+</resources>
