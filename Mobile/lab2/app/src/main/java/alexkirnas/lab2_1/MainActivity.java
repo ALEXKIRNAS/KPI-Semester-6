@@ -14,14 +14,22 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        passwordFragment = (PasswordFragment) getSupportFragmentManager().findFragmentById(R.id.password_fragment);
-        resultFragment = (ResultFragment) getSupportFragmentManager().findFragmentById(R.id.result_fragment);
+        passwordFragment = (PasswordFragment) getSupportFragmentManager().findFragmentById(
+                R.id.password_fragment
+        );
+
+        resultFragment = (ResultFragment) getSupportFragmentManager().findFragmentById(
+                R.id.result_fragment
+        );
     }
 
     @Override
     public void onButtonClicked() {
-        resultFragment.showResult(passwordFragment.password.getText().toString());
+        String pass = passwordFragment.password.getText().toString();
+        passwordFragment.password.setText("");
+        resultFragment.showResult(pass);
     }
+
 
     @Override
     public void onPasswordChanged() {

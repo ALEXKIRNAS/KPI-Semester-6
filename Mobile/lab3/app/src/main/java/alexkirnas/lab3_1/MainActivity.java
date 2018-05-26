@@ -88,14 +88,38 @@ public class MainActivity extends AppCompatActivity {
             builder.show();
         }
         else {
-            ContentValues cv = new ContentValues();
-            cv.put(Database.columnPassword, password.getText().toString());
-
-            db = database.getWritableDatabase();
-            db.insert(Database.table, null, cv);
+            db = database.getReadableDatabase();
+            Cursor cursor = db.rawQuery("select * from " +
+                    Database.table + " where " + Database.columnPassword + " = '" +
+                    password.getText().toString() +"'" , null);
+            int num = cursor.getCount();
             db.close();
-            Toast.makeText(getApplicationContext(), "Дані успішно додано!",
-                    Toast.LENGTH_SHORT).show();
+            cursor.close();
+            if(num != 0)
+            {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Помилка");
+                String message="Пароль '" + password.getText().toString() + "' вже є в базі даних!";
+                builder.setMessage(message);
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+            }
+            else {
+                ContentValues cv = new ContentValues();
+                cv.put(Database.columnPassword, password.getText().toString());
+
+                db = database.getWritableDatabase();
+                db.insert(Database.table, null, cv);
+                db.close();
+                password.setText("");
+                Toast.makeText(getApplicationContext(), "Дані успішно додано!",
+                        Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
